@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href= "Ps.png">
+        <title>Photo editor</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    </head>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Michroma&family=Nabla&family=Rubik+Moonrocks&display=swap');
+      *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Michroma', sans-serif;      }
+      body{
+        background-color: #DBE9F4;
+        background-attachment: fixed;
+      }
+      .container {
+        border-radius: 30px;
+        padding: 20px;
+        background-color: white;
+        width: 80vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% , -50%);
+        display: grid;
+        grid-template-columns: 5fr 3fr;
+      }
+      .img {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        justify-content: center;
+        align-items: center;
+      }
+      .img img,canvas{
+        max-width: 45vw;
+        max-height: 60vh;
+        border-radius: 15px;
+      }
+      .upload input{
+        display: none;
+      }
+      .upload label{
+        color: #00a9ec;
+        padding: 8px 20px;
+        border: 2px dashed #00a9ec;
+        cursor: pointer;
+        border-radius: 15px;
+      }
+      .filters ul, .filters li{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+      .filters ul li:last-child{
+        flex-direction: row;
+      }
+      input[type=range]{
+         -webkit-appearance: none;
+         width: 200px;
+         height: 10px;
+         background-color: aliceblue;
+         color: #00a9ec;
+         border-radius: 15px;
+         overflow: hidden;
+         outline: none;
+      }
+      input[type=range]::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #00a9ec;
+        cursor: pointer;
+        box-shadow: -407px 0 0 400px #00a9ec;
+        border-color: white;
+      }
+      .filters label{
+        color: #00a9ec;
+      }
+      #download {
+        text-decoration: none;
+         border-radius: 15px;
+          background-color: #00a9ec;
+          color: white;
+          padding: 5%;
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+      }
+      #download:hover{
+        color: #00a9ec;
+        background-color: white;
+        border: 1px solid #00a9ec;
+      }
+      span{
+         border-radius: 15px;
+          background-color: white;
+          color: #00a9ec;
+          border: 1px solid #00a9ec;
+          padding: 5%;
+          cursor: pointer;
+      }
+      @media screen and (max-width:650px){
+        .container{
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+        .img img,canvas{
+          max-width: 80vw;
+        }
+      }
+    </style>
+    <body>
+      <div class="container">
+        <div class="img">
+          <div class="img-box">
+            <img id="img">
+            <canvas id="canvas"></canvas>
+          </div>
+          <div class="upload">
+            <label for="upload">Upload</label>
+            <input type="file" id="upload">
+          </div>
+        </div>
+        <div class="filters">
+          <ul>
+            <li>
+              <label for="saturate">Saturate</label>
+              <input type="range" id="saturate" min="0" max="200" value="100">
+            </li>
+            <li>
+              <label for="contrast">Contrast</label>
+              <input type="range" id="contrast" min="0" max="200" value="100">
+            </li>
+            <li>
+              <label for="brightness">Brightness</label>
+              <input type="range" id="brightness" min="0" max="200" value="100">
+            </li>
+            <li>
+              <label for="sepia">Sepia</label>
+              <input type="range" id="sepia" min="0" max="200" value="0">
+            </li>
+            <li>
+              <label for="grayscale">Grayscale</label>
+              <input type="range" id="grayscale" min="0" step="0.1" max="1" value="0">
+            </li>
+            <li>
+              <label for="blur">Blur</label>
+              <input type="range" id="blur" min="0" step="0.1" max="10" value="0">
+            </li>
+            <li>
+              <label for="hue-rotate">Hue Rotate</label>
+              <input type="range" id="hue-rotate" min="0" max="350" value="0">
+            </li>
+            <li>
+              <span onclick="resetValue()">Reset</span>
+              <a download="love-u" id="download">Download <i class="fa-sharp fa-solid fa-download"></i> </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <script src="main.js">
+      </script>
+    </body>
+</html>
