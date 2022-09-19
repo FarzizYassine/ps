@@ -13,6 +13,7 @@ let saturate = document.getElementById("saturate");
          const canvas = document.getElementById("canvas");
          const ctx = canvas.getContext('2d');
          function resetValue(){
+           img.style.filter='none';
           ctx.filter = 'none';
           saturate.value='100';
           contrast.value='100';
